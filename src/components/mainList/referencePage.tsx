@@ -1,5 +1,7 @@
 import React from "react";
 
+import { OverCover } from "./overlayer/overlayer";
+import { SearchCompo } from "./search/searchContainer";
 import { ListTopLevelRoot } from "./listParts/TopLevel";
 import { ObjectModelTopLevel } from "./objectModesl/TopLevel";
 
@@ -8,9 +10,13 @@ const { Container } = RootContainer;
 
 export const ReferenceContainer = () => {
 	return (
-		<Container>
-			<ListTopLevelRoot />
-			<ObjectModelTopLevel />
-		</Container>
+		<>
+			<OverCover />
+			<SearchCompo />
+			<Container>
+				<ListTopLevelRoot />
+				<ObjectModelTopLevel />
+			</Container>
+		</>
 	);
 };

@@ -29,7 +29,7 @@ export type ClassDes_Method_Parameters_Type = {
 
 export type ClassDes_Method_Parameter = {
 	"shortdesc": string,
-	"datatype": ClassDes_Method_Parameters_Type,
+	"datatype"?: ClassDes_Method_Parameters_Type,
 	"@_name": string,
 	"@_optional"?: string
 };

@@ -1,5 +1,13 @@
 'use strict';
 const path = require('path');
+const webpack = require('webpack');
+
+const plugins = [
+  new webpack.DefinePlugin({
+    SEARCHTYPE: "search-text",
+    FILEPICK: "pick-file"
+  })
+];
 
 exports.renderer = {
   entry: './src/main.tsx',
@@ -23,7 +31,8 @@ exports.renderer = {
   // import 文で .ts や .tsx ファイルを解決するため
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-  }
+  },
+  plugins
 };
 // DefinePlugin、文字列もJSON.stringnifyする。文字列も"が外れる
 
@@ -47,5 +56,6 @@ exports.main = {
 	// import 文で .ts や .tsx ファイルを解決するため
 	resolve: {
 	  extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-	}
-  };
+	},
+  plugins
+};

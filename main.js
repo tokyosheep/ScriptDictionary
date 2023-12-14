@@ -126,6 +126,19 @@ electron__WEBPACK_IMPORTED_MODULE_0__.app.on("ready", function () {
   mainWindow.on("closed", function () {
     mainWindow = null;
   });
+  mainWindow.webContents.on("found-in-page", function (event, result) {
+    console.log(event, result);
+  });
+  electron__WEBPACK_IMPORTED_MODULE_0__.ipcMain.handle(search-text, function (event, arg) {
+    console.log(event);
+    console.log(arg);
+    var requestId = mainWindow.webContents.findInPage(arg.value, {
+      forward: true,
+      findNext: true,
+      matchCase: false
+    });
+    return requestId;
+  });
 });
 })();
 

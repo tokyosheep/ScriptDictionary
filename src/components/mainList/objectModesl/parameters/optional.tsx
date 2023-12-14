@@ -2,7 +2,7 @@ import React, { FC } from "react";
 
 import { ClassDef } from "xmlroot";
 
-import { CommonTitle } from "../../commonParts/header";
+import { CommonTitle, MarkKey } from "../../commonParts/header";
 
 type OptionalProps = {
 	classDef:ClassDef
@@ -11,52 +11,17 @@ type OptionalProps = {
 export const OptionalValues:FC<OptionalProps> = ({
 	classDef
 }) => {
-	const hasDynamic = Object.hasOwn(classDef, "@_dynamic");
-	const hasEnummeration = Object.hasOwn(classDef, "@_enumeration");
-	const hasShortDesc = Object.hasOwn(classDef, "shortdesc");
-	const hasSuperClass = Object.hasOwn(classDef, "superclass");
+	const valueLists = Object.entries(classDef).map(([key, value], i) =>{
+		if (typeof value !== "string"|| key === "@_name") return;
+		return (
+			<CommonTitle key={i}>
+				<MarkKey>{key}: </MarkKey> {value}
+			</CommonTitle>
+		);
+	});
 	return (
-		<>
-			{
-				(
-					hasDynamic ? 
-						<CommonTitle>
-							@_dynamic: {classDef["@_dynamic"]}
-						</CommonTitle>
-						:
-						""
-				)
-			}
-			{
-				(
-					hasEnummeration ?
-						<CommonTitle>
-							enumeration: {classDef["@_enumeration"]}
-						</CommonTitle>
-						:
-						""
-				)
-			}
-			{
-				(
-					hasShortDesc ?
-						<CommonTitle>
-							shortdesc: {classDef.shortdesc}
-						</CommonTitle>
-						:
-						""
-				)
-			}
-			{
-				(
-					hasSuperClass ?
-						<CommonTitle>
-							superclass: {classDef.superclass}
-						</CommonTitle>
-						:
-						""
-				)
-			}
-		</>
+		<div>
+			{valueLists}
+		</div>
 	);
 };

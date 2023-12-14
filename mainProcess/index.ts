@@ -1,5 +1,7 @@
-import electron, { app } from "electron";
+import electron, { app, ipcMain } from "electron";
 import path from "path";
+
+import { SearchParam, FilePickerParam } from "sender-context";
 
 const { BrowserWindow } = electron;
 
@@ -26,5 +28,24 @@ app.on("ready", () => {
 	if (DEBUG) mainWindow.webContents.openDevTools();
 	mainWindow.on("closed", () => {
 		mainWindow = null;
+	});
+
+	mainWindow.webContents.on("found-in-page",(event, result) => {
+		console.log(event, result);
+	});
+	
+	ipcMain.handle(SEARCHTYPE,(event, arg:SearchParam) => {
+		console.log(event);
+		console.log(arg);
+		const requestId = mainWindow.webContents.findInPage(arg.value, {
+			forward: true,
+			findNext: true,
+			matchCase: false
+		});
+		return requestId;
+	});
+
+	ipcMain.handle(FILEPICK, (event, option:FilePickerParam) => {
+		console.log(event);
 	});
 });

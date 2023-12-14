@@ -21,7 +21,6 @@ export const ObjectModelTopLevel = () => {
 			</ListWrapper>
 		);
 	});
-	console.log(SampleJSON.dictionary.package.classdef);
 	return (
 		<ObjectModelContainer>
 			<ul>

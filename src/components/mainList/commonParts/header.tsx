@@ -30,6 +30,11 @@ export const TargetTitle:FC<TargetProps> = ({
 export const CommonTitle = styled.span`
 	font-size: 12px;
 	display: block;
+	margin-block: 5px;
+`;
+
+export const MarkKey = styled.span`
+	color: #c3e3df;
 `;
 
 export const HrefText = styled.span`

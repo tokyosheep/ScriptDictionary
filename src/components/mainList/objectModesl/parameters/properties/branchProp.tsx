@@ -1,7 +1,9 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { ErrorBoundary } from "react-error-boundary";
 
-import { ClassDef } from "xmlroot";
+import { FallbackBackComponent } from "../../../commonParts/errorCompo";
+import { ClassDef, ClassDes_Method_Parameter, ClassDef_Property } from "xmlroot";
 
 import { HrefTitle } from "../../../commonParts/header";
 
@@ -32,7 +34,7 @@ export const PropsBranchCompo:FC<BranchProps> = ({
 		);
 	}) : "";
 
-	const PropsList = hasProp && Array.isArray(param["property"]) ? param["property"].map(property => {
+	const propsList = hasProp && Array.isArray(param["property"]) ? param["property"].map(property => {
 		return (
 			<PropertyCompo 
 				key={property["PropertyCompo"]}
@@ -42,14 +44,51 @@ export const PropsBranchCompo:FC<BranchProps> = ({
 	}) : "";
 	return (
 		<PropWrapper>
-			<HrefTitle>methods</HrefTitle>
-			<ListWrapper>
-				{methodList}
-			</ListWrapper>
-			<HrefTitle>properties</HrefTitle>
-			<ListWrapper>
-				{PropsList}
-			</ListWrapper>
+			{
+				methodList.length >= 1 ?
+					<>
+						<HrefTitle>methods</HrefTitle>
+						<ListWrapper>
+							{methodList}
+						</ListWrapper>
+					</>
+					:
+					""
+			}
+			{
+				propsList.length >= 1 ?
+					<>
+						<HrefTitle>properties</HrefTitle>
+						<ListWrapper>
+							{propsList}
+						</ListWrapper>
+					</>
+					:
+					""
+			}
 		</PropWrapper>
+	);
+};
+
+type ArrayPropAndMethod = ClassDes_Method_Parameter | ClassDef_Property;
+type ArrayProps = {
+	params: ArrayPropAndMethod[]
+}
+export const ArrayBranchPropAndMethod:FC<ArrayProps> = ({
+	params
+}) => {
+	const methodsAndPropsList = params.map((prop, i) => {
+		return (
+			<li key={i}>
+				<PropsBranchCompo
+					param={prop}
+				/>
+			</li>
+		);
+	});
+	return (
+		<ListWrapper>
+			{methodsAndPropsList}
+		</ListWrapper>
 	);
 };

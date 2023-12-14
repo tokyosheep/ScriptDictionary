@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 import { ClassDef_Property } from "xmlroot";
 
-import { TargetTitle, CommonTitle } from "../../../commonParts/header";
+import { TargetTitle, CommonTitle, MarkKey } from "../../../commonParts/header";
 
 type PropertyProp = {
 	property: ClassDef_Property
@@ -21,12 +21,12 @@ export const PropertyCompo:FC<PropertyProp> = ({ property }) => {
 				text={property["@_name"]}
 			/>
 			<CommonTitle>
-				access: {property["@_rwaccess"]}
+				<MarkKey>@_rwaccess: </MarkKey> {property["@_rwaccess"]}
 			</CommonTitle>
 			{
 				Object.hasOwn(property, "shortdesc") ?
 					<CommonTitle>
-						{property.shortdesc}
+						<MarkKey>shortdesc: </MarkKey>{property.shortdesc}
 					</CommonTitle>
 					:
 					""
