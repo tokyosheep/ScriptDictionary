@@ -2,21 +2,25 @@ import React, { FC } from "react";
 
 import { ClassDef } from "xmlroot";
 
-import { CommonTitle, MarkKey } from "../../commonParts/header";
+import { UnknownProperty } from "../../commonParts/repeatObject";
 
 type OptionalProps = {
-	classDef:ClassDef
+	classDef:ClassDef,
+	excludeKeys: string[]
 }
 
 export const OptionalValues:FC<OptionalProps> = ({
-	classDef
+	classDef,
+	excludeKeys
 }) => {
 	const valueLists = Object.entries(classDef).map(([key, value], i) =>{
-		if (typeof value !== "string"|| key === "@_name") return;
+		if (excludeKeys.some(ek => ek === key)) return;
 		return (
-			<CommonTitle key={i}>
-				<MarkKey>{key}: </MarkKey> {value}
-			</CommonTitle>
+			<UnknownProperty
+				key={i}
+				Objkey={key}
+				value={value}
+			/>
 		);
 	});
 	return (

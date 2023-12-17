@@ -8,14 +8,18 @@ const ErrorText = styled.span`
 `;
 
 const ErrorWrapper = styled.div`
-	height: 20px;
+	height: auto;
+	padding: 10px;
 `;
 
-export const FallbackBackComponent = ({ error }) => {
+export const FallbackBackComponent = ({ error }: {error: Error}) => {
 	console.log(error);
 	return (
 		<ErrorWrapper>
-			<ErrorText>Error: something wronf</ErrorText>
+			<ErrorText>
+				Error: something wrong
+				{error.message}	
+			</ErrorText>
 		</ErrorWrapper>
 	);
 };

@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { RootMap } from "xmlroot";
+import { RootMap, BridgeRootMap } from "xmlroot";
 
-import { HrefComponent } from "./href";
+import { HrefComponent, BridgeHrefComponent } from "./href";
 
 type RootProp = {
-	root: RootMap
+	root: RootMap | BridgeRootMap
 };
 
 const RootTitle = styled.span`
@@ -20,14 +20,18 @@ const RootWrapper = styled.ul`
 export const RootMapCompo:FC<RootProp> = ({
 	root
 }) => {
-	const hrefList = root.topicref.map((cref) => {
+	const hrefList = Array.isArray(root.topicref) ? root.topicref.map((cref) => {
 		return (
 			<HrefComponent
 				key={cref["@_navtitle"]}
 				XMLprop={cref}
 			/>
 		);
-	});
+	}) :
+		<BridgeHrefComponent
+			XMLProps={root.topicref.topicref}
+			navTitle={root.topicref["@_navtitle"]}
+		/>;
 	return (
 		<>
 			<RootWrapper>

@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { ClassDef_Method } from "xmlroot";
-import { /*Linktext,*/CommonTitle, MarkKey } from "../../../../commonParts/header";
+import { CommonTitle, MarkKey } from "../../../../commonParts/header";
 
 type DataType = ClassDef_Method["datatype"];
 
@@ -35,15 +35,3 @@ export const DataTypeCompo:FC<DataTypeProp> = ({
 		</DataTypeWrapper>
 	);
 };
-
-/*
-Object.hasOwn(dataType.type, "#text") ?
-<DataTypeWrapper>
-	<Linktext 
-		text={"dataType:" + dataType.type["#text"]}
-		href={dataType.type["#text"]}
-	/>
-</DataTypeWrapper>
-:
-""
-*/

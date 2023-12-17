@@ -1,8 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
-
-import { FilePickerParam } from "sender-context";
-import { ipcRenderer } from "electron";
 
 const OverLayer = styled.div<{isVisible: boolean}>`
 	width: 100%;
@@ -25,17 +22,11 @@ const LoadingTitle = styled.span`
 	transform: translateX(-50%);
 `;
 
-export const OverCover = () => {
-	const [isVisible, serVisible] = useState<boolean>(false);
-	useEffect(() => {
-		(async () => {
-			const option:FilePickerParam = {
-				ext: "xml"
-			};
-			const result = await ipcRenderer.invoke(FILEPICK, option);
-			console.log(result);
-		})();
-	}, []);
+export const OverCover:FC<{
+		isVisible: boolean
+}> = ({
+	isVisible
+}) => {
 	return (
 		<OverLayer
 			isVisible={isVisible}

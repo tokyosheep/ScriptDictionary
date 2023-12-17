@@ -1,9 +1,13 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { ClassDes_Method_Parameter } from "xmlroot";
+import { ErrorBoundary } from "react-error-boundary";
+
+import { FallbackBackComponent } from "../../../../commonParts/errorCompo";
+import { UnknownProperty } from "../../../../commonParts/repeatObject";
 
 import { TheDepthsParam } from "./parameterType/parameterDataType";
-import { TargetTitle, CommonTitle, MarkKey } from "../../../../commonParts/header";
+import { TargetTitle, CommonTitle } from "../../../../commonParts/header";
 
 type ParameterProps = {
 	param: ClassDes_Method_Parameter
@@ -17,44 +21,34 @@ export const MehotParameterCompo:FC<ParameterProps> = ({
 	param
 }) => {
 	const otherLists = Object.entries(param).map(([key, value], i) => {
-		if(key === "@_name" || key === "datatype" || typeof value !== "string")return;
+		if(key === "@_name" || key === "datatype")return;
 		return (
 			<CommonTitle key={i}>
-				<MarkKey>{key}: </MarkKey> {value}
+				<UnknownProperty 
+					Objkey={key}
+					value={value} />
 			</CommonTitle>
 		);
 	});
 	return (
-		<ParameterWrapper>
-			<TargetTitle 
-				id={param["@_name"]}
-				text={param["@_name"]}
-			/>
-			{
-				Object.hasOwn(param, "datatype") ?
-					<TheDepthsParam 
-						root={param.datatype}
-					/>
-					:
-					""
-			}
-			{otherLists}
-		</ParameterWrapper>
+		<ErrorBoundary
+			FallbackComponent={FallbackBackComponent}
+		>
+			<ParameterWrapper>
+				<TargetTitle 
+					id={param["@_name"]}
+					text={param["@_name"]}
+				/>
+				{
+					Object.hasOwn(param, "datatype") ?
+						<TheDepthsParam 
+							root={param.datatype}
+						/>
+						:
+						""
+				}
+				{otherLists}
+			</ParameterWrapper>
+		</ErrorBoundary>
 	);
 };
-
-/*
-{
-	<CommonTitle>
-		{Object.hasOwn(param, "shortdesc") ? "shortdesc: " + param["shortdesc"] : ""}
-	</CommonTitle>
-
-	Object.hasOwn(param, "@_optional") ?
-		<CommonTitle>
-			{"optional: " + param["@_optional"]}
-		</CommonTitle>
-		:
-		""
-}
-
-*/

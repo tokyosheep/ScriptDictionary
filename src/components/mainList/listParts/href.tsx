@@ -1,10 +1,10 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Topicref } from "xmlroot";
+import { Topicref, BridgeTopicref } from "xmlroot";
 
 import { HrefTitle, Linktext } from "../commonParts/header";
 
-import { BsBoundingBoxCircles } from "react-icons/bs";
+// import { BsBoundingBoxCircles } from "react-icons/bs";
 
 const HrefWrapper = styled.li`
 
@@ -32,19 +32,41 @@ export const HrefComponent:FC<TopicrefProps> = ({ XMLprop }) => {
 			);
 		});
 	}
-	if (Object.hasOwn(XMLprop, "topicref") && !Array.isArray(XMLprop.topicref)) {
+	if (topicrefComp === undefined && Object.hasOwn(XMLprop, "topicref") && !Array.isArray(XMLprop.topicref)) {
 		topicrefComp = (
-			<div>
+			<HrefWrapper>
 				<Linktext 
 					text={XMLprop.topicref["@_navtitle"]}
 					href={XMLprop.topicref["@_navtitle"]}
 				/>
-			</div>
+			</HrefWrapper>
 		);
 	}
 	return (
 		<ListWrapper>
 			<HrefTitle>{XMLprop["@_navtitle"]}</HrefTitle>
+			{topicrefComp}
+		</ListWrapper>
+	);
+};
+
+export const BridgeHrefComponent:FC<{XMLProps: BridgeTopicref, navTitle:string}> = ({ 
+	XMLProps,
+	navTitle
+}) => {
+	const topicrefComp = XMLProps.map((propList) => {
+		return (
+			<HrefWrapper key={propList["@_navtitle"]}>
+				<Linktext 
+					text={propList["@_navtitle"]}
+					href={propList["@_navtitle"]}
+				/>
+			</HrefWrapper>
+		);
+	});
+	return (
+		<ListWrapper>
+			<HrefTitle>{navTitle}</HrefTitle>
 			{topicrefComp}
 		</ListWrapper>
 	);

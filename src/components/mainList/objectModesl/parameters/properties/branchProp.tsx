@@ -1,8 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { ErrorBoundary } from "react-error-boundary";
 
-import { FallbackBackComponent } from "../../../commonParts/errorCompo";
+import { UnknownProperty } from "../../../commonParts/repeatObject";
 import { ClassDef, ClassDes_Method_Parameter, ClassDef_Property } from "xmlroot";
 
 import { HrefTitle } from "../../../commonParts/header";
@@ -42,6 +41,17 @@ export const PropsBranchCompo:FC<BranchProps> = ({
 			/>
 		);
 	}) : "";
+	const otherProps = Object.entries(param).map(([key, value], i) => {
+		if (hasProp && propsList !== "") return;
+		if (hasMethod && methodList !== "") return;
+		return (
+			<UnknownProperty
+				key={i}
+				Objkey={key}
+				value={value}
+			/>
+		);
+	});
 	return (
 		<PropWrapper>
 			{
@@ -65,6 +75,9 @@ export const PropsBranchCompo:FC<BranchProps> = ({
 					</>
 					:
 					""
+			}
+			{
+				otherProps
 			}
 		</PropWrapper>
 	);

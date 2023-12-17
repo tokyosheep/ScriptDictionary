@@ -1,4 +1,4 @@
-import { XmlRoot } from "XML-root";
+import { XmlRoot } from "xmlroot";
 import SampleJSON  from "../../ll.json";
 
 export const resolveJson = () => {

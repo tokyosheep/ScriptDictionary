@@ -1,4 +1,9 @@
-import JSONSample from "../ll.json";
+import JSONSample from "./xmlType.json";
+import BridheSampleJSON from "./bridgeXMLType.json";
+
+export type BridgeRoot = typeof BridheSampleJSON;
+export type BridgeRootMap = typeof BridheSampleJSON["dictionary"]["map"];
+export type BridgeTopicref = typeof BridheSampleJSON["dictionary"]["map"]["topicref"]["topicref"];
 
 export type JSONRoot = typeof JSONSample;
 export type RootMap = typeof JSONSample["dictionary"]["map"];

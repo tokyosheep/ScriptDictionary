@@ -1,6 +1,8 @@
 import electron, { app, ipcMain } from "electron";
 import path from "path";
 
+import { SEARCHTYPE, FILEPICK } from "../environment/environment";
+import { pickFile } from "./readingXML";
 import { SearchParam, FilePickerParam } from "sender-context";
 
 const { BrowserWindow } = electron;
@@ -33,7 +35,6 @@ app.on("ready", () => {
 	mainWindow.webContents.on("found-in-page",(event, result) => {
 		console.log(event, result);
 	});
-	
 	ipcMain.handle(SEARCHTYPE,(event, arg:SearchParam) => {
 		console.log(event);
 		console.log(arg);
@@ -45,7 +46,9 @@ app.on("ready", () => {
 		return requestId;
 	});
 
-	ipcMain.handle(FILEPICK, (event, option:FilePickerParam) => {
+	ipcMain.handle(FILEPICK, async (event, option:FilePickerParam) => {
 		console.log(event);
+		const result = await pickFile([option.ext]);
+		return result;
 	});
 });

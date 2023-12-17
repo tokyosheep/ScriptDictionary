@@ -1,32 +1,38 @@
 import React, { FC } from "react";
-import styled from "styled-components";
+import { ErrorBoundary } from "react-error-boundary";
 
+import { FallbackBackComponent } from "../../../../../commonParts/errorCompo";
+import { UnknownProperty } from "../../../../../commonParts/repeatObject";
 import { ClassDes_Method_Parameters_Type } from "xmlroot";
-import { CommonTitle, MarkKey } from "../../../../../commonParts/header";
-
-import { DataTypeCompo } from "../dataType";
 
 type DepthProps = {
 	root: ClassDes_Method_Parameters_Type
 };
 
-const TypeWrapper = styled.div`
-`;
-
 export const TheDepthsParam:FC<DepthProps> = ({
 	root
 }) => {
 	const otherLists = Object.entries(root).map(([key, value], i) => {
-		if (key ==="type" || typeof value !== "string")return;
+		// if (key === "type")return;
 		return (
-			<CommonTitle key={i}>
-				<MarkKey>{key}: </MarkKey> {value}
-			</CommonTitle>
+			<UnknownProperty 
+				key={i}
+				value={value}
+				Objkey={key}
+			/>
 		);
 	});
 	return (
-		<>
-			{
+		<ErrorBoundary
+			FallbackComponent={FallbackBackComponent}
+		>
+			{otherLists}
+		</ErrorBoundary>
+	);
+};
+
+/*
+{
 				typeof root["type"] === "string" ?
 				
 					<TypeWrapper>
@@ -43,15 +49,4 @@ export const TheDepthsParam:FC<DepthProps> = ({
 							}}}
 					/>
 			}
-			{otherLists}
-		</>
-	);
-};
-
-/*
-<CommonTitle>
-	{ 
-		Object.hasOwn(root, "value") ? "value: " + root["value"] : ""
-	}
-</CommonTitle>
 */

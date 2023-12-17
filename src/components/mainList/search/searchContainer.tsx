@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
+import { SEARCHTYPE } from "../../../../environment/environment";
 import { SearchParam } from "sender-context";
 import { ipcRenderer } from "electron";
 

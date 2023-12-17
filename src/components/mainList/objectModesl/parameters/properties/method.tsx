@@ -2,10 +2,10 @@ import React, { FC } from "react";
 import styled from "styled-components";
 
 import { ClassDef_Method } from "xmlroot";
+import { UnknownProperty } from "../../../commonParts/repeatObject";
 
-import { DataTypeCompo } from "./methodProp/dataType";
 import { ParametersCompo } from "./methodProp/parameters";
-import { TargetTitle, CommonTitle, MarkKey } from "../../../commonParts/header";
+import { TargetTitle } from "../../../commonParts/header";
 
 type MethodProps = {
 	methodClass: ClassDef_Method
@@ -18,22 +18,22 @@ const MethodWrapper = styled.li`
 export const MethodCompo:FC<MethodProps> = ({
 	methodClass
 }) => {
+	const otherProps = Object.entries(methodClass).map(([key, value], i) => {
+		if (key === ("@_name" || "parameters")) return;
+		return (
+			<UnknownProperty
+				Objkey={key}
+				key={i}
+				value={value}
+			/>
+		);
+	});
 	return (
 		<MethodWrapper>
 			<TargetTitle
 				id={methodClass["@_name"]}
 				text={methodClass["@_name"]}
 			/>
-			<CommonTitle><MarkKey>shortdesc: </MarkKey>{methodClass.shortdesc}</CommonTitle>
-
-			{
-				Object.hasOwn(methodClass, "datatype") 
-					? <DataTypeCompo 
-						dataType={methodClass.datatype}
-					/>
-					:
-					""
-			}
 			{
 				Object.hasOwn(methodClass, "parameters")
 					?
@@ -43,6 +43,18 @@ export const MethodCompo:FC<MethodProps> = ({
 					:
 					""
 			}
+			{otherProps}
 		</MethodWrapper>
 	);
 };
+/*
+<CommonTitle><MarkKey>shortdesc: </MarkKey>{methodClass.shortdesc}</CommonTitle>
+{
+	Object.hasOwn(methodClass, "datatype") 
+		? <DataTypeCompo 
+			dataType={methodClass.datatype}
+		/>
+		:
+		""
+}
+*/

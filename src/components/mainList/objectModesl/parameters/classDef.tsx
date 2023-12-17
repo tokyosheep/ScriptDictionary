@@ -31,10 +31,16 @@ export const ClassDefCompo:FC<ClassDefProps> = ({
 				/>
 				<OptionalValues 
 					classDef={classDef}
+					excludeKeys={["@_name", "elements"]}
 				/>
-				<PropsBranchCompo 
-					param={classDef.elements}
-				/>
+				{
+					Object.hasOwn(classDef, "elements") && !Array.isArray(classDef.elements) ?
+						<PropsBranchCompo 
+							param={classDef.elements}
+						/>
+						:
+						""
+				}
 				{
 					Array.isArray(classDef.elements) ? 
 						<ArrayBranchPropAndMethod params={classDef.elements} />
