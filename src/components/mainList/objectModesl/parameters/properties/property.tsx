@@ -17,6 +17,7 @@ const PropWrapper = styled.li`
 export const PropertyCompo:FC<PropertyProp> = ({ property }) => {
 	const otherProps = Object.entries(property).map(([key, value], i) => {
 		if (key === "@_name") return;
+		// other than name, inspect all of properties in any depth
 		return (
 			<UnknownProperty
 				Objkey={key}
@@ -37,15 +38,3 @@ export const PropertyCompo:FC<PropertyProp> = ({ property }) => {
 		</PropWrapper>
 	);
 };
-
-/*
-<CommonTitle>
-				<MarkKey>@_rwaccess: </MarkKey> {property["@_rwaccess"]}
-			</CommonTitle>
-Object.hasOwn(property, "shortdesc") ?
-					<CommonTitle>
-						<MarkKey>shortdesc: </MarkKey>{property.shortdesc}
-					</CommonTitle>
-					:
-					""
-*/

@@ -16,6 +16,11 @@ const { Container } = RootContainer;
 
 export type AppStatus = typeof XMLType|null|"error"|"loading";
 
+/**
+ * here is top hierarchy of XML Component.
+ * 
+ * @returns {React.JSX.Element}
+ */
 export const ReferenceContainer = () => {
 	const [xmlData, setXmlData] = useState<AppStatus>("loading");
 	const getXml = async () => {
@@ -39,6 +44,7 @@ export const ReferenceContainer = () => {
 			/>
 			
 			{
+				/*before loading xml so none of data displayed.*/
 				xmlData === null || xmlData === "loading"?
 					<NoneOfResultCompo 
 						func={getXml}
@@ -47,6 +53,7 @@ export const ReferenceContainer = () => {
 					xmlData === "error" ?
 						<ErrorResultCompo />
 						:
+						/* displayed list of xml. */
 						<>
 							<SearchCompo />
 							<Container>

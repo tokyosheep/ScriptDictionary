@@ -19,11 +19,20 @@ const FormWrapper = styled.div`
 	align-items: center;	
 `;
 
+/**
+ * searching component.
+ * @returns 
+ */
 export const SearchCompo = () => {
 	const [searchValue, setSearch] = useState<string>("");
 	const handleTextBox = (e:React.ChangeEvent<HTMLInputElement>) => {
 		setSearch(e.target.value);
 	};
+	/**
+	 * this function sends message to main process.
+	 * because search method only works on main process.
+	 * @param {string} v search word. 
+	 */
 	const searchOnUI = async (v) => {
 		const option:SearchParam = {value: v};
 		const result = await ipcRenderer.invoke(SEARCHTYPE, option);

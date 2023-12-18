@@ -1,7 +1,10 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 
-const OverLayer = styled.div<{isVisible: boolean}>`
+/**
+ * isvisible must be string type
+ */
+const OverLayer = styled.div<{isvisible: string}>`
 	width: 100%;
 	height: 100%;
 	background: rgba(0,0,0, 0.4);
@@ -9,7 +12,7 @@ const OverLayer = styled.div<{isVisible: boolean}>`
 	position: fixed;
 	top: 0;
 	left: 0;
-	display: ${props => props.isVisible ? "display": "none"};
+	display: ${props => props.isvisible === "true" ? "display": "none"};
 `;
 
 const LoadingTitle = styled.span`
@@ -22,6 +25,11 @@ const LoadingTitle = styled.span`
 	transform: translateX(-50%);
 `;
 
+/**
+ * loading over layer
+ * @param {boolean} param0 
+ * @returns 
+ */
 export const OverCover:FC<{
 		isVisible: boolean
 }> = ({
@@ -29,7 +37,7 @@ export const OverCover:FC<{
 }) => {
 	return (
 		<OverLayer
-			isVisible={isVisible}
+			isvisible={isVisible.toString()}
 		>
 			<LoadingTitle>
 				Loading...

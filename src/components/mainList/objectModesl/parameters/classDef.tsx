@@ -17,6 +17,14 @@ type ClassDefProps = {
 	classDef:ClassDef
 };
 
+/**
+ * sencond hierarchy on Object list.
+ * each XML has their own name, elements, and some other properties.
+ * generally elements has list of Object list.
+ * but in some case it can be slightly different.
+ * @param param0 
+ * @returns 
+ */
 export const ClassDefCompo:FC<ClassDefProps> = ({
 	classDef
 }) => {
@@ -29,11 +37,13 @@ export const ClassDefCompo:FC<ClassDefProps> = ({
 					id={classDef["@_name"]}
 					text={classDef["@_name"]}
 				/>
+				{/*other string values. it passes class Object just in case.*/}
 				<OptionalValues 
 					classDef={classDef}
 					excludeKeys={["@_name", "elements"]}
 				/>
 				{
+					/* if elements property has property and method directly. */
 					Object.hasOwn(classDef, "elements") && !Array.isArray(classDef.elements) ?
 						<PropsBranchCompo 
 							param={classDef.elements}
@@ -42,6 +52,7 @@ export const ClassDefCompo:FC<ClassDefProps> = ({
 						""
 				}
 				{
+					/*in case of array Object */
 					Array.isArray(classDef.elements) ? 
 						<ArrayBranchPropAndMethod params={classDef.elements} />
 						: 

@@ -17,7 +17,13 @@ const ListWrapper = styled.ul`
 type TopicrefProps = {
 	XMLprop:Topicref
 }
-
+/**
+ * third hierarchy on topicref list.
+ * topicref property has navigating title.
+ * each title can be linked to property list.
+ * @param param0 
+ * @returns 
+ */
 export const HrefComponent:FC<TopicrefProps> = ({ XMLprop }) => {
 	let topicrefComp;
 	if (Object.hasOwn(XMLprop, "topicref") && Array.isArray(XMLprop.topicref)) {
@@ -50,6 +56,11 @@ export const HrefComponent:FC<TopicrefProps> = ({ XMLprop }) => {
 	);
 };
 
+/**
+ * as I said Bridge has different construction.
+ * @param param0 
+ * @returns 
+ */
 export const BridgeHrefComponent:FC<{XMLProps: BridgeTopicref, navTitle:string}> = ({ 
 	XMLProps,
 	navTitle

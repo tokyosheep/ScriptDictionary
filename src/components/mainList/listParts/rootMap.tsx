@@ -17,6 +17,11 @@ const RootWrapper = styled.ul`
 	padding: 0;
 `;
 
+/**
+ * sencond hierarchy on topicref list.
+ * @param param0 
+ * @returns 
+ */
 export const RootMapCompo:FC<RootProp> = ({
 	root
 }) => {
@@ -28,6 +33,7 @@ export const RootMapCompo:FC<RootProp> = ({
 			/>
 		);
 	}) :
+	/* Bridge has different construction. so it branches bridge and others. I don't know why. */
 		<BridgeHrefComponent
 			XMLProps={root.topicref.topicref}
 			navTitle={root.topicref["@_navtitle"]}

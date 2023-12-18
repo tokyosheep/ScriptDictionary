@@ -23,7 +23,8 @@ app.on("ready", () => {
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
-			zoomFactor: 1
+			zoomFactor: 1,
+			devTools: DEBUG
 		}
 	});
 	mainWindow.loadURL(path.join(`file://${__dirname}`, "index.html"));

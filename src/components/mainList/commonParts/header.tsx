@@ -14,6 +14,12 @@ type TargetProps = {
 	text: string
 };
 
+/**
+ * target title must have id.
+ * because it must be able to jump from topics list left side on UI.
+ * @param param0 
+ * @returns 
+ */
 export const TargetTitle:FC<TargetProps> = ({
 	id,
 	text
@@ -54,6 +60,12 @@ type LinkProps = {
 	text: string
 }
 
+/**
+ * topics link has link href attribute.
+ * it can jump to each property list on right side.
+ * @param param0 
+ * @returns 
+ */
 export const Linktext:FC<LinkProps> = ({
 	href, text
 }) => {

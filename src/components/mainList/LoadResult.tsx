@@ -1,6 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
+/**
+ * the components displaied index UI.
+ * before loading or any problem is happened.
+ */
+
 const Container = styled.div`
 	display: grid;
 	place-items: center;
@@ -34,6 +39,11 @@ const LoadButton = styled.button`
 
 `;
 
+/**
+ * before load xml or canceled load, it returns this component.
+ * @param param0 
+ * @returns 
+ */
 export const NoneOfResultCompo = <F extends () =>Promise<unknown> ,>({
 	func
 }:{func:F}) => {

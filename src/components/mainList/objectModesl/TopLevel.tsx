@@ -10,6 +10,11 @@ import { ClassDefCompo } from "./parameters/classDef";
 const ListWrapper = styled.li`
 `;
 
+/**
+ * top hierarchy on Object list.(excluded topicrefs)
+ * @param param0 
+ * @returns 
+ */
 export const ObjectModelTopLevel:FC<{rootData: typeof SampleJSON}> = ({
 	rootData
 }) => {

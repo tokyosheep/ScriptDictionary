@@ -26,17 +26,23 @@ const ArrayWrapper = styled.ul`
 	}
 `;
 
+// basically Object or Array or String.
 type PossiblyType = object|Array<PossiblyType>|string|number|null|undefined;
 type PossiblyArray = PossiblyType[];
 
+/**
+ * in case of Array
+ * @param {array:PossiblyArray, Objkey:string} param0 
+ * @returns 
+ */
 const ArrayRepeat:FC<{array:PossiblyArray, Objkey:string}> = ({
 	array,
 	Objkey
 }) => {
-	const arrayList = array.map(value => {
+	const arrayList = array.map((value, i) => {
 		return (
 			Array.isArray(value) ?
-				<li>
+				<li key={i}>
 					<ArrayRepeat 
 						Objkey=""
 						array={value}
@@ -44,14 +50,14 @@ const ArrayRepeat:FC<{array:PossiblyArray, Objkey:string}> = ({
 				</li>
 				:
 				typeof value === TYPEOFOBJ && value.constructor.name === CONSTRUCTOBJ ?
-					<li>
+					<li key={i}>
 						<RepeatBlock
 							Objkey=""
 							object={value}
 						/>
 					</li>
 					:
-					<li>
+					<li key={i}>
 						<CommonTitle>
 							{value?.toString() ?? "none"}
 						</CommonTitle>
@@ -70,6 +76,12 @@ const ArrayRepeat:FC<{array:PossiblyArray, Objkey:string}> = ({
 	);
 };
 
+/**
+ * in case of Object.
+ * inspect keys and value in object.
+ * @param { object: PossiblyType, Objkey: string }param0 
+ * @returns 
+ */
 const RepeatBlock:FC<{
 	object: PossiblyType,
 	Objkey: string
@@ -77,21 +89,25 @@ const RepeatBlock:FC<{
 	object,
 	Objkey
 }) => {
-	const objList = Object.entries(object).map(([key, value]) => {
+	const objList = Object.entries(object).map(([key, value], i) => {
 		return (
 			Array.isArray(value) ?
 				<ArrayRepeat 
+					key={i}
 					Objkey={key}
 					array={value}
 				/>
 				:
 				typeof value === TYPEOFOBJ && value.constructor.name === CONSTRUCTOBJ ?
 					<RepeatBlock 
+						key={i}
 						Objkey={key}
 						object={value}
 					/>
 					:
-					<CommonTitle>
+					<CommonTitle
+						key={i}
+					>
 						<MarkKey>{key} :</MarkKey>{value}
 					</CommonTitle>
 		);
@@ -106,6 +122,12 @@ const RepeatBlock:FC<{
 	);
 };
 
+/**
+ * recursively inspect objects.
+ * untill it reaches string value
+ * @param param0 
+ * @returns 
+ */
 export const UnknownProperty:FC<{
 	value: PossiblyType,
 	Objkey: string
@@ -113,6 +135,16 @@ export const UnknownProperty:FC<{
 	value,
 	Objkey
 }) => {
+	/**
+	 * Array.isArray(value)
+	 * ..... in case of Array object
+	 * 
+	 * typeof value === TYPEOFOBJ && value.constructor.name === CONSTRUCTOBJ
+	 * ....... in case of Object.
+	 * 
+	 * else ......
+	 * in case of string value.
+	 */
 	const anyType = Array.isArray(value) ?
 		<ArrayRepeat 
 			Objkey={Objkey}

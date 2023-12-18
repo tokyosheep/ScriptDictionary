@@ -12,6 +12,13 @@ const ErrorWrapper = styled.div`
 	padding: 10px;
 `;
 
+/**
+ * ErrorBoundry receives error.
+ * then it returns this component.
+ * error prop tells what is causing the error.
+ * @param param0 
+ * @returns 
+ */
 export const FallbackBackComponent = ({ error }: {error: Error}) => {
 	console.log(error);
 	return (

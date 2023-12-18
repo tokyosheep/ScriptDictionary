@@ -1,0 +1,472 @@
+/* && !tagname.match(startsWithXML) */
+
+/* else if(matches[i][6] === undefined){//attribute without value: ab=
+                    return { err: { code:"InvalidAttr",msg:"attribute " + matches[i][2] + " has no value assigned."}};
+                } */
+
+/* exports.merge =function (b,a){
+  return Object.assign(b,a);
+} */
+
+/* webpack/runtime/compat get default export */
+
+/*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */
+
+/*#__PURE__*/
+
+/**
+     * Add Entity which is not by default supported by this library
+     * @param {string} key 
+     * @param {string} value 
+     */
+
+/**
+     * Parse XML dats to JS object 
+     * @param {string|Buffer} xmlData 
+     * @param {boolean|Object} validationOption 
+     */
+
+/**
+ * 
+ * @param {array} arr 
+ * @param {object} options 
+ * @param {string} jPath 
+ * @returns object
+ */
+
+/**
+ * 
+ * @param {array} jArray 
+ * @param {any} options 
+ * @returns 
+ */
+
+/**
+ * 
+ * @param {array} node 
+ * @param {any} options 
+ * @returns 
+ */
+
+/**
+ * 
+ * @param {string[]} stopNodes 
+ * @param {string} jPath
+ * @param {string} currentTagName 
+ */
+
+/**
+ * 
+ * @param {string} numStr without leading zeros
+ * @returns 
+ */
+
+/**
+ * @param {string} val
+ * @param {string} tagName
+ * @param {string} jPath
+ * @param {boolean} dontTrim
+ * @param {boolean} hasAttributes
+ * @param {boolean} isLeafNode
+ * @param {boolean} escapeEntities
+ */
+
+/**
+ * Copy all the properties of a into b.
+ * @param {*} target
+ * @param {*} a
+ */
+
+/**
+ * Keep reading xmlData until '<' is found outside the attribute value.
+ * @param {string} xmlData
+ * @param {number} i
+ */
+
+/**
+ * Read Processing insstructions and skip
+ * @param {*} xmlData
+ * @param {*} i
+ */
+
+/**
+ * Returns the tag Expression and where it is ending handling single-double quotes situation
+ * @param {string} xmlData 
+ * @param {number} i starting index
+ * @returns 
+ */
+
+/**
+ * Select all the attributes whether valid or invalid.
+ */
+
+/**
+ * find paired tag for a stop node
+ * @param {string} xmlData 
+ * @param {string} tagName 
+ * @param {number} i 
+ */
+
+/************************************************************************/
+
+/******/
+
+/***/
+
+/*, options*/
+
+//     else return str;
+
+//     if(options.leadingZeros) return num;
+
+//     options.hex = false;
+
+//     options.leadingZeros = false;
+
+//     return Number.parseInt(val, 2);
+
+//     return Number.parseInt(val, 8);
+
+//    <!ENTITY entityname "&anotherElement;">
+
+//    <!ENTITY entityname "replacement text">
+
+//    <!ENTITY ext SYSTEM "http://normal-website.com" >
+
+// "amp" : { regex: /&(amp|#38);/g, val: "&" },
+
+// "apos" : { regex: /&(apos|#39);/g, val: "'" },
+
+// "gt" : { regex: /&(gt|#62);/g, val: ">" },
+
+// "lt" : { regex: /&(lt|#60);/g, val: "<" },
+
+// "quot" : { regex: /&(quot|#34);/g, val: "\"" },
+
+// CONCATENATED MODULE: ./mainProcess/index.ts
+
+// CONCATENATED MODULE: ./mainProcess/readingXML.ts
+
+// CONCATENATED MODULE: external "electron"
+
+// CONCATENATED MODULE: external "fs"
+
+// CONCATENATED MODULE: external "path"
+
+// Check if module is in cache
+
+// Create a new module (and put it into the cache)
+
+// EXTERNAL MODULE: ./node_modules/fast-xml-parser/src/fxp.js
+
+// Execute the module function
+
+// Return the exports of the module
+
+// Starting at 1 since we already have an open tag
+
+// The module cache
+
+// The require function
+
+// This entry need to be wrapped in an IIFE because it need to be in strict mode.
+
+// attrStr = attrStr.replace(/\r?\n/g, ' ');
+
+// attrStr is an empty string in case the attribute came as undefined or null
+
+// check for byte order mark (BOM)
+
+// column number is last line's length + 1, because column numbering starts at 1:
+
+// const _2ndChar = xmlData[nextIndex];
+
+// const binRegex = /0x[a-z0-9]+/;
+
+// const decimalPart = match[5].substr(1);
+
+// const fakeCall = function(a) {return a;};
+
+// const fakeCallNoReturn = function() {};
+
+// const givenDecPart = numStr.substr(p+1);
+
+// const givenIntPart = numStr.substr(0,p);
+
+// const intPart = trimmedStr.substr(0,trimmedStr.indexOf("."));
+
+// const nextIndex = i+1;
+
+// const octRegex = /0x[a-z0-9]+/;
+
+// const options = Object.assign({}, consider);
+
+// const p = numStr.indexOf(".");
+
+// const startsWithXML = /^xml/i;
+
+// define getter functions for harmony exports
+
+// else 
+
+// else if(!eNotation && trimmedStr && trimmedStr !== Number(trimmedStr) ) return str;
+
+// else if(trimmedStr === "+0.0") return 0;
+
+// else if(trimmedStr === "-0.0") return -0;
+
+// getDefaultExport function for compatibility with non-harmony modules
+
+// https://www.w3.org/TR/xml/#dt-charref
+
+// if(!val) val = "";
+
+// if(numTrimmedByZeros === numStr){
+
+// if(opt.leadingZeros === false){
+
+// if(text && text.length > 0) compressedObj[options.textNodeName] = text;
+
+// if(trimmedStr === "0.0") return 0;
+
+// if(xmlData[i] === " ") continue;
+
+// let val = this.parseTextData(tagExp, this.options.cdataPropName, jPath + "." + this.options.cdataPropName, true, false, true);
+
+// no module.id needed
+
+// no module.loaded needed
+
+// null attribute should be ignored by the attribute list, but should not cause the tag closing
+
+// remove NS from tag name or attribute name if true
+
+// supress undefined node only if it is not an attribute
+
+// this.child.push( {name : key, val: val, isCdata: isCdata });
+
+// transformAttributeName: false,
+
+// transformTagName: false,
+
+// val += this.indentate(level) + '<' + key + '/' + this.tagEndChar;
+
+// webpackBootstrap
+
+// will return an array of own properties
+
+// }
+
+// } else if (options.parseOct && octRegex.test(str)) {
+
+// }else if (options.parseBin && binRegex.test(str)) {
+
+// }else if(opt.hex === false){
+
+// }else return str;
+
+//-0123
+
+///@ts-check
+
+//0123
+
+//A tag can have attributes without any value
+
+//Closing Tag
+
+//Determine the tag type
+
+//External entities are not supported
+
+//Internal entities are supported
+
+//It may include comments and CDATA value
+
+//Not supported
+
+//Opening tag
+
+//PI tag
+
+//Parameter entities are not supported
+
+//Read tag content
+
+//TODO: change regex to capture NS
+
+//TODO: handle comments
+
+//TODO: if a node is not an array, then check if it should be an array
+
+//TODO: remove this line
+
+//TODO: use jPath to simplify the logic
+
+//Trim string values of tag and attributes
+
+//a tag can have attributes without any value
+
+//also determine if it is a leaf node
+
+//attr, ="sd", a="amit's", a="sd"b="saf", ab  cd=""
+
+//attrStr = attrStr || attrStr.trim();
+
+//avoid recursion, set the parent tag scope
+
+//cdata should be set even if it is 0 length string
+
+//check for duplicate attribute.
+
+//check if last tag of nested tag was unpaired tag
+
+//check if last tag was unpaired tag
+
+//check if valid attribut string
+
+//close tag
+
+//closing tag
+
+//comment
+
+//comment or CADATA
+
+//complete num without leading zeros
+
+//console.log("start:"+attrStr+":end");
+
+//console.log(options)
+
+//console.log(tagName);
+
+//const attrsRegx = new RegExp("([\\w\\-\\.\\:]+)\\s*=\\s*(['\"])((.|\n)*?)\\2","gm");
+
+//const tagsPattern = new RegExp("<\\/?([\\w:\\-_\.]+)\\s*\/?>","g");
+
+//const tagsRegx = new RegExp("<(\\/?)((\\w*:)?([\\w:\\-\._]+))([^>]*)>([^<]*)("+cdataRegx+"([^<]*))*([^<]+)?","g");
+
+//const tagsRegx = new RegExp("<(\\/?[\\w:\\-\._]+)([^>]*)>(\\s*"+cdataRegx+")*([^<]+)?","g");
+
+//continue;
+
+//don't make it inline
+
+//don't parse
+
+//empty
+
+//end for loop
+
+//end of reading tag text value
+
+//float
+
+//floating number
+
+//given number is long and parsed to eNotation
+
+//if the root level has been reached before ...
+
+//if(attrStr.trim().length === 0) return true; //empty string
+
+//ignoreRootElement : false,
+
+//in order to get the 'true' error line, we need to calculate the position where the attribute begins (i - attrStr.length) and then add the position within the attribute
+
+//independent attribute: ab
+
+//indicates that the root tag has been closed (aka. depth 0 has been reached)
+
+//it must be on top
+
+//nested node
+
+//nested tags will not be parsed even for errors
+
+//nested tags, text, cdata, comments in order
+
+//no leading zeros or leading zeros are allowed
+
+//non-numeric string
+
+//nospace before attribute name: a="sd"b="saf"
+
+//opening tag
+
+//overwrite
+
+//parse Empty Node as self closing node
+
+//polyfill
+
+//premitive type
+
+//read Entity Value
+
+//read EntityName
+
+//read tagname
+
+//read until closing tag is found
+
+//read until you reach to '>' avoiding any '>' in attribute value
+
+//remove ending zeros
+
+//remove extra spacing
+
+//remove trailing '/'
+
+//repeated nodes
+
+//reset
+
+//save text as child node
+
+//self closing tag
+
+//self closing tag without attributes
+
+//self-closing tag
+
+//selfClosing tag
+
+//separate negative sign, leading zeros, and rest number
+
+//separate tag name and attributes expression
+
+//skip tag text value
+
+//starting of tag
+
+//store previously collected data as textNode
+
+//tag value
+
+//tagname
+
+//the result from the nested function returns the position of the error within the attribute
+
+//this function returns the line number for the character at the given index
+
+//this function returns the position of the first character of match within attrStr
+
+//this gives us the absolute index in the entire xml, which we can use to find the line at last
+
+//trim ending zeros for floating number
+
+//unpaired
+
+//validate with default options
+
+//when nested tag is found
+
+//when there are no more tags, we reached the root level.
+
+//xmlData = xmlData.replace(/(<!DOCTYPE[\s\w\"\.\/\-\:]+(\[.*\])*\s*>)/g,"");//Remove DOCTYPE
+
+//xmlData = xmlData.replace(/(\r\n|\n|\r)/gm,"");//make it single line
+
+//xmlData = xmlData.replace(/(^\s*<\?xml.*?\?>)/g,"");//Remove XML starting tag
