@@ -56,7 +56,7 @@ on right side, details of class.
 and on top side, there is a search form.
 you can search word on this UI.
 
-### what indiate each list
+### what indiates on each list
 
 on XML, many type of descriptions and properties.
 but I don't know exactly what is described.
