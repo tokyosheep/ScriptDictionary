@@ -1,7 +1,7 @@
 {
   "name": "scriptdictionary",
   "version": "1.0.0",
-  "description": "",
+  "description": "parsing ExtendScript XML",
   "main": "main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -14,7 +14,7 @@
     "make": "electron-forge make"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kawano Shuji",
   "license": "ISC",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
