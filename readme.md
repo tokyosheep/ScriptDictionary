@@ -5,9 +5,11 @@ this app for viewing Adobe ExtendScript XML as a omv.xml.
 ExtendToolkit loads XML data which is written Document Object Model and listing on UI.
 but as you know the app isn't supported any more even on Mac OS, it's impossible to open.
 but still omv.xml file exists.
+in this lists can help to develop and understand ExtendScript Object model.
+they explain many object details.
 so I decided to develop this.
 
-*Japanese explanation*
+*Japanese explanation*  
 [here](https://kawano-shuji.com/justdiary/2023/12/19/electron-script-dictionary/) you can see
 
 ## where can I find omv.xml?
@@ -49,7 +51,7 @@ then this app loads XML and transfer to list on UI.
 on left side, there is a link list.
 each class name navigates you to detail on right side.
 
-on right side, detail of classes.
+on right side, details of class.
 
 and on top side, there is a search form.
 you can search word on this UI.
